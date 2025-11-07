@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Droplet, Truck, Archive, Package } from 'lucide-react';
+import { Droplet } from 'lucide-react';
 
 const BankDarah = () => {
   const [activeTab, setActiveTab] = useState('donor');

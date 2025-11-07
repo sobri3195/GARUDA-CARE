@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Utensils, FileText, MessageSquare } from 'lucide-react';
+import { Utensils, MessageSquare } from 'lucide-react';
 
 const Gizi = () => {
   const [activeTab, setActiveTab] = useState('manajemen');

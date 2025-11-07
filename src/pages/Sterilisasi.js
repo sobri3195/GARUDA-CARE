@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Package, Droplet, Archive, Box } from 'lucide-react';
+import { Package, Archive } from 'lucide-react';
 
 const Sterilisasi = () => {
   const [activeTab, setActiveTab] = useState('penerimaan');

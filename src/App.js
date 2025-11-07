@@ -43,6 +43,10 @@ import PerawatanIntensif from './pages/PerawatanIntensif';
 import BankDarah from './pages/BankDarah';
 import RehabilitasiMedik from './pages/RehabilitasiMedik';
 import Anestesi from './pages/Anestesi';
+import Informasi from './pages/Informasi';
+import SMSGateway from './pages/SMSGateway';
+import MobilePatients from './pages/MobilePatients';
+import MobileDoctor from './pages/MobileDoctor';
 
 function App() {
   return (
@@ -437,6 +441,46 @@ function App() {
                 <div className="content">
                   <Breadcrumb items={[{ label: 'Pelayanan 2' }, { label: 'Anestesi' }]} />
                   <Anestesi />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/informasi" element={
+              <>
+                <Header title="Informasi" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Informasi' }, { label: 'Informasi' }]} />
+                  <Informasi />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/sms-gateway" element={
+              <>
+                <Header title="SMS Gateway & Email" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Informasi' }, { label: 'SMS Gateway & Email' }]} />
+                  <SMSGateway />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/mobile-patients" element={
+              <>
+                <Header title="Mobile Patients" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Informasi' }, { label: 'Mobile Patients' }]} />
+                  <MobilePatients />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/mobile-doctor" element={
+              <>
+                <Header title="Mobile Doctor" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Informasi' }, { label: 'Mobile Doctor' }]} />
+                  <MobileDoctor />
                 </div>
                 <Footer />
               </>

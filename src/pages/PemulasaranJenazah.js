@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Ambulance, FileText, ClipboardList, ScrollText } from 'lucide-react';
+import { Ambulance } from 'lucide-react';
 
 const PemulasaranJenazah = () => {
   const [activeTab, setActiveTab] = useState('mobil');

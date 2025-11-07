@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, ClipboardList, Activity, FileText } from 'lucide-react';
+import { Users, Activity } from 'lucide-react';
 
 const Anestesi = () => {
   const [activeTab, setActiveTab] = useState('pra');

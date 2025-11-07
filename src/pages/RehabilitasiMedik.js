@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, ClipboardCheck, Activity, Package } from 'lucide-react';
+import { Users, Activity } from 'lucide-react';
 
 const RehabilitasiMedik = () => {
   const [activeTab, setActiveTab] = useState('informasi');

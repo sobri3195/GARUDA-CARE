@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, TrendingUp, Activity, Map, Heart, DollarSign, Scale, Package } from 'lucide-react';
+import { Users, TrendingUp, Activity, Map, Heart, DollarSign, Package } from 'lucide-react';
 
 const SistemInformasiEksekutif = () => {
   const [activeTab, setActiveTab] = useState('pasien');
