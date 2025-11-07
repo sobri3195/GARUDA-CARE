@@ -22,7 +22,12 @@ import {
   CreditCard,
   Package,
   Archive,
-  Clipboard
+  Clipboard,
+  Shield,
+  Warehouse,
+  ShoppingCart,
+  Calculator,
+  Wallet
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -59,6 +64,16 @@ const Sidebar = () => {
         { path: '/keuangan', icon: DollarSign, label: 'Keuangan' },
         { path: '/mutu', icon: ShieldCheck, label: 'Mutu & Keselamatan' },
         { path: '/analitik', icon: BarChart3, label: 'Analitik' }
+      ]
+    },
+    {
+      title: 'Back Office',
+      items: [
+        { path: '/asuransi', icon: Shield, label: 'Asuransi Penjamin' },
+        { path: '/gudang-umum', icon: Warehouse, label: 'Gudang Umum' },
+        { path: '/pengadaan', icon: ShoppingCart, label: 'Pengadaan/Pembelian' },
+        { path: '/akuntansi', icon: Calculator, label: 'Akuntansi' },
+        { path: '/keuangan-manajemen', icon: Wallet, label: 'Manajemen Keuangan' }
       ]
     },
     {

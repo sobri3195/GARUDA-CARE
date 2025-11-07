@@ -94,6 +94,48 @@ Sistem Informasi Rumah Sakit (SIMRS) komprehensif yang dirancang untuk Rumah Sak
 - **Aircrew Profile**: Rekam profil kesehatan awak dan deployability
 - **Drug/Alcohol Screening**: Tes berkala untuk keamanan penerbangan
 
+### 13. Back Office 💼
+
+#### Asuransi Penjamin
+- **Informasi Pasien BPJS**: Dashboard pasien BPJS dengan tracking SEP dan tarif INA-CBG
+- **Informasi Pasien Non-BPJS**: Manajemen 12+ perusahaan asuransi swasta
+- **Pengajuan Claim**: Sistem pengajuan claim dengan validasi dokumen
+- **Manajemen Claim**: Tracking status claim (Disetujui/Partial/Ditolak)
+- **Penerimaan Pembayaran**: Recording pembayaran dari penjamin dengan aging monitoring
+
+#### Gudang Umum
+- **Informasi Barang**: Katalog lengkap (ATK, Elektronik, Furniture, Kebersihan, Konsumsi)
+- **Rekomendasi Pemesanan Otomatis**: Algoritma auto-reorder berdasarkan min stock & usage patterns
+- **Penerimaan Barang**: Workflow penerimaan dengan verifikasi
+- **Pemusnahan Barang**: Berita Acara Pemusnahan dengan tracking regulasi
+- **Mutasi Barang**: Transfer antar lokasi dengan approval
+- **Stok Opname**: Periodic stock taking dengan variance analysis
+
+#### Pengadaan/Pembelian
+- **Purchase Order Manual**: Form PO lengkap dengan perhitungan PPN 11%
+- **PO dari Rekomendasi**: Generate PO otomatis dari rekomendasi gudang
+- **Manajemen Supplier**: Database supplier dengan rating dan kategori
+- **Manajemen PO**: Complete PO lifecycle (Draft → Approval → Sent → Received)
+- **Retur Barang**: Pengelolaan retur dengan dokumentasi lengkap
+
+#### Akuntansi (11 Modul)
+- **Invoice & Tagihan**: Manajemen invoice dan billing per penjamin
+- **Kartu Piutang**: Detail piutang per debitur dengan saldo running
+- **Aging Piutang**: Analisis umur piutang (0-30, 31-60, 61-90, >90 hari)
+- **Kartu Hutang**: Detail hutang per supplier dengan saldo running
+- **Aging Hutang**: Analisis umur hutang dengan status monitoring
+- **Jurnal Umum**: Double-entry bookkeeping dengan auto-generation
+- **Buku Besar**: General ledger per account dengan periode filter
+- **Laporan Laba Rugi**: Income statement (Bulanan/Quarterly/Annual)
+- **Laporan Neraca**: Balance sheet dengan aktiva/passiva
+- **Laporan Arus Kas**: Cash flow statement
+- **Laporan Keuangan Lainnya**: Perubahan modal, neraca saldo, rasio keuangan
+
+#### Manajemen Keuangan
+- **Manajemen Kas**: Buku kas harian dengan tutup kas
+- **Manajemen Bank**: Multi-bank accounts (Mandiri, BNI, BRI, BCA) dengan reconciliation
+- **Transfer Dana**: Internal & external transfer dengan audit trail
+
 ## 🛠️ Teknologi
 
 - **Frontend**: React.js 18+
@@ -176,6 +218,11 @@ src/
 │   ├── Radiologi.js
 │   ├── Keperawatan.js
 │   ├── RawatInap.js
+│   ├── Asuransi.js      # NEW: Insurance management
+│   ├── GudangUmum.js    # NEW: General warehouse
+│   ├── Pengadaan.js     # NEW: Procurement
+│   ├── Akuntansi.js     # NEW: Accounting (11 modules)
+│   ├── KeuanganManajemen.js  # NEW: Financial management
 │   ├── Operasional.js
 │   ├── Keuangan.js
 │   ├── SDM.js
