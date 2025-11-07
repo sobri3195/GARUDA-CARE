@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserPlus, Search, QrCode, Calendar, ExternalLink, Clock, Users, CheckCircle, Camera, Upload, User, AlertCircle, X } from 'lucide-react';
+import { UserPlus, Search, QrCode, Calendar, ExternalLink, Clock, Users, CheckCircle, Camera, Upload, AlertCircle, X } from 'lucide-react';
 import TableWithExport from '../components/TableWithExport';
 
 const Registrasi = () => {

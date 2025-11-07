@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Activity, Bed, Clock, AlertCircle, TrendingUp, TrendingDown, DollarSign, FileText, Heart, Stethoscope, Pill, TestTube } from 'lucide-react';
+import { Users, Activity, Bed, Clock, AlertCircle, TrendingUp, TrendingDown, Heart, Stethoscope, TestTube } from 'lucide-react';
 import TableWithExport from '../components/TableWithExport';
 
 const Dashboard = () => {
