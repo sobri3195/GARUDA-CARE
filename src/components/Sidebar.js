@@ -38,7 +38,8 @@ import {
   Heart,
   Info,
   Send,
-  Smartphone
+  Smartphone,
+  Anchor
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -121,6 +122,14 @@ const Sidebar = () => {
         { path: '/sms-gateway', icon: Send, label: 'SMS Gateway & Email' },
         { path: '/mobile-patients', icon: Smartphone, label: 'Mobile Patients' },
         { path: '/mobile-doctor', icon: Stethoscope, label: 'Mobile Doctor' }
+      ]
+    },
+    {
+      title: 'TRIMATRA',
+      items: [
+        { path: '/tni-ad', icon: Shield, label: 'TNI AD' },
+        { path: '/tni-al', icon: Anchor, label: 'TNI AL' },
+        { path: '/tni-au', icon: Plane, label: 'TNI AU' }
       ]
     }
   ];

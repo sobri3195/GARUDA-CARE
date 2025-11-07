@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { UserPlus, Search, QrCode, Calendar, ExternalLink, Clock, Users, CheckCircle } from 'lucide-react';
+import TableWithExport from '../components/TableWithExport';
 
 const Registrasi = () => {
   const [activeTab, setActiveTab] = useState('registrasi');
@@ -390,7 +391,8 @@ const Registrasi = () => {
                 <button className="btn btn-primary btn-sm">Panggil Antrean Berikutnya</button>
                 <button className="btn btn-outline btn-sm">Refresh</button>
               </div>
-              <table className="table">
+              <TableWithExport title="Antrean Pendaftaran" tableId="antrean-pendaftaran">
+              <table className="table" id="antrean-pendaftaran">
                 <thead>
                   <tr>
                     <th>No. Antrean</th>
@@ -454,6 +456,7 @@ const Registrasi = () => {
                   </tr>
                 </tbody>
               </table>
+              </TableWithExport>
             </div>
           </div>
         </div>
@@ -465,7 +468,8 @@ const Registrasi = () => {
             <h2 className="card-title">Jadwal Praktek Dokter</h2>
           </div>
           <div className="card-body">
-            <table className="table">
+            <TableWithExport title="Jadwal Praktek Dokter" tableId="jadwal-dokter">
+            <table className="table" id="jadwal-dokter">
               <thead>
                 <tr>
                   <th>Nama Dokter</th>
@@ -531,6 +535,7 @@ const Registrasi = () => {
                 </tr>
               </tbody>
             </table>
+            </TableWithExport>
           </div>
         </div>
       )}

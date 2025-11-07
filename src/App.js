@@ -47,6 +47,10 @@ import Informasi from './pages/Informasi';
 import SMSGateway from './pages/SMSGateway';
 import MobilePatients from './pages/MobilePatients';
 import MobileDoctor from './pages/MobileDoctor';
+import TNIAD from './pages/TNIAD';
+import TNIAL from './pages/TNIAL';
+import TNIAU from './pages/TNIAU';
+import Rikkes from './pages/Rikkes';
 
 function App() {
   return (
@@ -481,6 +485,56 @@ function App() {
                 <div className="content">
                   <Breadcrumb items={[{ label: 'Informasi' }, { label: 'Mobile Doctor' }]} />
                   <MobileDoctor />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/tni-ad" element={
+              <>
+                <Header title="TNI AD" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'TRIMATRA' }, { label: 'TNI AD' }]} />
+                  <TNIAD />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/tni-al" element={
+              <>
+                <Header title="TNI AL" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'TRIMATRA' }, { label: 'TNI AL' }]} />
+                  <TNIAL />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/tni-au" element={
+              <>
+                <Header title="TNI AU" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'TRIMATRA' }, { label: 'TNI AU' }]} />
+                  <TNIAU />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/tni-au/aerospace" element={
+              <>
+                <Header title="Aerospace Medicine" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'TRIMATRA' }, { label: 'TNI AU' }, { label: 'Aerospace Medicine' }]} />
+                  <AerospaceMedicine />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/tni-au/rikkes" element={
+              <>
+                <Header title="Rikkes (Pemeriksaan Kesehatan)" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'TRIMATRA' }, { label: 'TNI AU' }, { label: 'Rikkes' }]} />
+                  <Rikkes />
                 </div>
                 <Footer />
               </>
