@@ -1,12 +1,12 @@
-# SIMRS TNI AU - Sistem Informasi Rumah Sakit TNI Angkatan Udara
+# SIMRS RS Trimatra - Sistem Informasi Rumah Sakit Trimatra
 
-Sistem Informasi Rumah Sakit (SIMRS) komprehensif yang dirancang khusus untuk Rumah Sakit TNI Angkatan Udara dengan fitur lengkap termasuk modul Aerospace Medicine.
+Sistem Informasi Rumah Sakit (SIMRS) komprehensif yang dirancang untuk Rumah Sakit Trimatra dengan fitur lengkap termasuk modul Aerospace Medicine untuk mendukung layanan kesehatan bagi ketiga angkatan (TNI AD, AL, AU).
 
 ## 🚀 Fitur Utama
 
 ### 1. Registrasi, Antrean & Rujukan
 - Registrasi pasien baru/lama dengan NIK/NRP
-- Pemetaan unit/satuan TNI
+- Pemetaan unit/satuan TNI (AD, AL, AU)
 - Sistem antrean omni-channel (loket, kiosk, mobile/web)
 - Manajemen jadwal dokter dan poliklinik
 - Rujukan internal dan eksternal (BPJS)
@@ -86,7 +86,7 @@ Sistem Informasi Rumah Sakit (SIMRS) komprehensif yang dirancang khusus untuk Ru
 - Data warehouse
 - Penelitian dan etik
 
-### 12. Aerospace Medicine (Khusus TNI AU) ✈️
+### 12. Aerospace Medicine ✈️
 - **Fit-to-Fly Assessment**: Pemeriksaan kelayakan terbang awak pesawat
 - **Pemeriksaan Berkala Awak**: Audiometri, visus, spirometri, EKG, lab khusus
 - **Medical Readiness**: Status kesiapan medis individual dan unit untuk deployment
@@ -110,7 +110,7 @@ Sistem Informasi Rumah Sakit (SIMRS) komprehensif yang dirancang khusus untuk Ru
 ### Clone dan Install
 ```bash
 git clone <repository-url>
-cd simrs-tni-au
+cd simrs-rs-trimatra
 npm install
 ```
 
@@ -161,8 +161,12 @@ netlify deploy --prod
 ```
 src/
 ├── components/          # Komponen reusable
-│   ├── Sidebar.js
-│   └── Header.js
+│   ├── Sidebar.js      # Menu navigasi
+│   ├── Header.js       # Header dengan user info
+│   ├── Breadcrumb.js   # Navigasi breadcrumb
+│   ├── Footer.js       # Footer aplikasi
+│   ├── TableWithExport.js  # Tabel dengan export
+│   └── DataTable.js    # Komponen tabel
 ├── pages/              # Halaman utama aplikasi
 │   ├── Dashboard.js
 │   ├── Registrasi.js
@@ -190,10 +194,38 @@ src/
 ## 🎨 Design System
 
 Aplikasi menggunakan custom design system dengan:
-- **Warna TNI AU**: Blue (#003d82) dan Gold (#d4af37)
+- **Warna Utama**: Blue (#003d82) dan Gold (#d4af37)
 - **Typography**: System fonts untuk performa optimal
 - **Responsive**: Mobile-first design
 - **Accessibility**: WCAG 2.1 compliant
+- **Animations**: Smooth transitions dan hover effects
+
+## ✨ Fitur Baru
+
+### Navigasi
+- **Breadcrumb**: Navigasi hierarki halaman yang jelas
+- **Menu Terorganisir**: Sidebar dengan kategori Pelayanan, Administrasi, dan Kepegawaian
+- **Logo**: Logo RS Trimatra dengan animasi di sidebar
+
+### Footer
+- Informasi kontak rumah sakit
+- Jam operasional
+- Social media links
+
+### Export Data
+Setiap tabel data dilengkapi dengan fitur export ke berbagai format:
+- **Copy**: Copy data ke clipboard
+- **Excel**: Export ke format .xls
+- **CSV**: Export ke format .csv
+- **Word**: Export ke format .doc
+- **PDF**: Print/save as PDF
+
+### Animasi
+- Fade in/out transitions
+- Slide animations
+- Hover effects pada buttons dan cards
+- Smooth scrolling
+- Pulse animation pada logo
 
 ## 🔐 Keamanan & Compliance
 
@@ -210,7 +242,9 @@ Aplikasi menggunakan custom design system dengan:
 
 ### Phase 1 (Current) ✅
 - Core modules implementation
-- Basic UI/UX
+- Enhanced UI/UX with animations
+- Breadcrumb navigation
+- Export functionality
 - Netlify deployment
 
 ### Phase 2 (Q2 2024)
@@ -237,27 +271,28 @@ Contributions are welcome! Please read our contributing guidelines first.
 
 ## 📄 License
 
-Copyright © 2024 TNI Angkatan Udara. All rights reserved.
+Copyright © 2024 RS Trimatra. All rights reserved.
 
 ## 👥 Team
 
 - **Developer**: SIMRS Development Team
 - **Medical Advisor**: Aerospace Medicine Specialists
-- **Project Manager**: TNI AU IT Department
+- **Project Manager**: RS Trimatra IT Department
 
 ## 📞 Support
 
 Untuk pertanyaan dan dukungan:
-- Email: support@simrs-tniau.mil.id
-- Hotline: 021-XXXXX (Internal TNI)
+- Email: info@rstrimatra.id
+- Phone: (021) 1234-5678
+- Website: www.rstrimatra.id
 
 ## 🙏 Acknowledgments
 
-- TNI Angkatan Udara
+- TNI Trimatra (AD, AL, AU)
 - Kementerian Kesehatan RI
 - BPJS Kesehatan
 - Aviation Medicine Community
 
 ---
 
-**Made with ❤️ for Indonesian Air Force Healthcare**
+**Made with ❤️ for Indonesian Military Healthcare**

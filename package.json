@@ -1,8 +1,8 @@
 {
-  "name": "simrs-tni-au",
+  "name": "simrs-rs-trimatra",
   "version": "1.0.0",
-  "description": "Sistem Informasi Rumah Sakit TNI Angkatan Udara",
-  "author": "TNI AU IT Department",
+  "description": "Sistem Informasi Rumah Sakit Trimatra",
+  "author": "RS Trimatra IT Department",
   "private": true,
   "dependencies": {
     "lucide-react": "^0.552.0",
