@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { UserPlus, Search, QrCode, Calendar, ExternalLink, Clock, Users, CheckCircle, Camera, Upload, AlertCircle, X } from 'lucide-react';
+import { UserPlus, Search, QrCode, ExternalLink, Clock, Users, CheckCircle, Camera, Upload, AlertCircle, X, Bell, XCircle, TrendingUp, Activity } from 'lucide-react';
 import TableWithExport from '../components/TableWithExport';
 
 const Registrasi = () => {
   const [activeTab, setActiveTab] = useState('registrasi');
+  const [activeQueueTab, setActiveQueueTab] = useState('pendaftaran');
   const [jenisRegistrasi, setJenisRegistrasi] = useState('rawatjalan');
   const [isPasienBaru, setIsPasienBaru] = useState(true);
   const [showQRScanner, setShowQRScanner] = useState(false);
@@ -31,6 +32,36 @@ const Registrasi = () => {
     alergi: '',
     riwayatPenyakit: ''
   });
+
+  // Queue Management State
+  const [queuePendaftaran, setQueuePendaftaran] = useState([
+    { id: 1, noAntrean: 'A-012', nama: 'Mayor Budi Santoso', jenis: 'Rawat Jalan', loket: 'Loket 1', waktu: '08:30', estimasi: '5 menit', status: 'Menunggu' },
+    { id: 2, noAntrean: 'A-013', nama: 'Kapten Ahmad Fauzi', jenis: 'Rawat Jalan', loket: 'Loket 1', waktu: '08:45', estimasi: '-', status: 'Dilayani' },
+    { id: 3, noAntrean: 'A-014', nama: 'Kolonel Siti Nurhaliza', jenis: 'BPJS', loket: 'Loket 2', waktu: '09:00', estimasi: '15 menit', status: 'Menunggu' },
+    { id: 4, noAntrean: 'B-008', nama: 'Serda Hendra Wijaya', jenis: 'Rawat Inap', loket: 'Loket 3', waktu: '09:15', estimasi: '25 menit', status: 'Menunggu' },
+    { id: 5, noAntrean: 'A-015', nama: 'Lettu Andi Saputra', jenis: 'Rawat Jalan', loket: 'Loket 1', waktu: '09:30', estimasi: '35 menit', status: 'Menunggu' },
+  ]);
+
+  const [queuePenunjang, setQueuePenunjang] = useState([
+    { id: 1, noAntrean: 'LAB-045', nama: 'Kolonel Bambang Wijaya', jenis: 'Laboratorium', ruang: 'Lab 1', waktu: '08:15', estimasi: '10 menit', status: 'Menunggu' },
+    { id: 2, noAntrean: 'RAD-023', nama: 'Mayor Indah Permata', jenis: 'Radiologi', ruang: 'Radiologi', waktu: '08:30', estimasi: '-', status: 'Dilayani' },
+    { id: 3, noAntrean: 'LAB-046', nama: 'Kapten Yusuf Hidayat', jenis: 'Laboratorium', ruang: 'Lab 2', waktu: '08:45', estimasi: '20 menit', status: 'Menunggu' },
+    { id: 4, noAntrean: 'RAD-024', nama: 'Serka Dewi Sartika', jenis: 'Radiologi', ruang: 'Radiologi', waktu: '09:00', estimasi: '30 menit', status: 'Menunggu' },
+  ]);
+
+  const [queueKasir, setQueueKasir] = useState([
+    { id: 1, noAntrean: 'K-087', nama: 'Letkol Hadi Purnomo', jenis: 'Pembayaran Rawat Jalan', loket: 'Kasir 1', waktu: '08:20', estimasi: '5 menit', status: 'Menunggu' },
+    { id: 2, noAntrean: 'K-088', nama: 'Mayor Siti Rahma', jenis: 'Pembayaran Tindakan', loket: 'Kasir 2', waktu: '08:35', estimasi: '-', status: 'Dilayani' },
+    { id: 3, noAntrean: 'K-089', nama: 'Kapten Budi Raharjo', jenis: 'Pembayaran Lab', loket: 'Kasir 1', waktu: '08:50', estimasi: '10 menit', status: 'Menunggu' },
+    { id: 4, noAntrean: 'K-090', nama: 'Serda Ahmad Faisal', jenis: 'DP Rawat Inap', loket: 'Kasir 3', waktu: '09:05', estimasi: '15 menit', status: 'Menunggu' },
+  ]);
+
+  const [queueApotek, setQueueApotek] = useState([
+    { id: 1, noAntrean: 'APT-125', nama: 'Kolonel Dedi Kurniawan', jenis: 'Resep Rawat Jalan', loket: 'Apotek 1', waktu: '08:10', estimasi: '10 menit', status: 'Menunggu' },
+    { id: 2, noAntrean: 'APT-126', nama: 'Mayor Lisa Andriani', jenis: 'Resep Rawat Inap', loket: 'Apotek 2', waktu: '08:25', estimasi: '-', status: 'Dilayani' },
+    { id: 3, noAntrean: 'APT-127', nama: 'Kapten Rudi Hartono', jenis: 'Resep Rawat Jalan', loket: 'Apotek 1', waktu: '08:40', estimasi: '20 menit', status: 'Menunggu' },
+    { id: 4, noAntrean: 'APT-128', nama: 'Letda Putri Wulandari', jenis: 'Resep Rawat Jalan', loket: 'Apotek 3', waktu: '08:55', estimasi: '30 menit', status: 'Menunggu' },
+  ]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -150,6 +181,56 @@ const Registrasi = () => {
     setSearchResults([]);
     setIsPasienBaru(false);
   };
+
+  // Queue Management Functions
+  const handleCallQueue = (queueType, id) => {
+    const setQueue = queueType === 'pendaftaran' ? setQueuePendaftaran :
+                     queueType === 'penunjang' ? setQueuePenunjang :
+                     queueType === 'kasir' ? setQueueKasir : setQueueApotek;
+
+    const queue = queueType === 'pendaftaran' ? queuePendaftaran :
+                  queueType === 'penunjang' ? queuePenunjang :
+                  queueType === 'kasir' ? queueKasir : queueApotek;
+
+    setQueue(queue.map(item => 
+      item.id === id ? { ...item, status: 'Dilayani', estimasi: '-' } : item
+    ));
+  };
+
+  const handleFinishQueue = (queueType, id) => {
+    const setQueue = queueType === 'pendaftaran' ? setQueuePendaftaran :
+                     queueType === 'penunjang' ? setQueuePenunjang :
+                     queueType === 'kasir' ? setQueueKasir : setQueueApotek;
+
+    const queue = queueType === 'pendaftaran' ? queuePendaftaran :
+                  queueType === 'penunjang' ? queuePenunjang :
+                  queueType === 'kasir' ? queueKasir : queueApotek;
+
+    setQueue(queue.map(item => 
+      item.id === id ? { ...item, status: 'Selesai' } : item
+    ));
+  };
+
+  const getQueueStats = (queue) => {
+    const total = queue.length;
+    const dilayani = queue.filter(q => q.status === 'Dilayani').length;
+    const selesai = queue.filter(q => q.status === 'Selesai').length;
+    const menunggu = queue.filter(q => q.status === 'Menunggu').length;
+    return { total, dilayani, selesai, menunggu };
+  };
+
+  const getCurrentQueue = () => {
+    switch(activeQueueTab) {
+      case 'pendaftaran': return queuePendaftaran;
+      case 'penunjang': return queuePenunjang;
+      case 'kasir': return queueKasir;
+      case 'apotek': return queueApotek;
+      default: return [];
+    }
+  };
+
+  const currentQueue = getCurrentQueue();
+  const queueStats = getQueueStats(currentQueue);
 
   return (
     <div>
@@ -581,130 +662,312 @@ const Registrasi = () => {
       {activeTab === 'antrean' && (
         <div>
           <div className="tabs" style={{ marginBottom: '20px' }}>
-            <button className="tab active">Antrean Pendaftaran</button>
-            <button className="tab">Antrean Penunjang</button>
-            <button className="tab">Antrean Kasir</button>
-            <button className="tab">Antrean Apotek</button>
-            <button className="tab">Kuota Dokter</button>
+            <button 
+              className={`tab ${activeQueueTab === 'pendaftaran' ? 'active' : ''}`}
+              onClick={() => setActiveQueueTab('pendaftaran')}
+            >
+              Antrean Pendaftaran
+            </button>
+            <button 
+              className={`tab ${activeQueueTab === 'penunjang' ? 'active' : ''}`}
+              onClick={() => setActiveQueueTab('penunjang')}
+            >
+              Antrean Penunjang
+            </button>
+            <button 
+              className={`tab ${activeQueueTab === 'kasir' ? 'active' : ''}`}
+              onClick={() => setActiveQueueTab('kasir')}
+            >
+              Antrean Kasir
+            </button>
+            <button 
+              className={`tab ${activeQueueTab === 'apotek' ? 'active' : ''}`}
+              onClick={() => setActiveQueueTab('apotek')}
+            >
+              Antrean Apotek
+            </button>
+            <button 
+              className={`tab ${activeQueueTab === 'kuota' ? 'active' : ''}`}
+              onClick={() => setActiveQueueTab('kuota')}
+            >
+              Kuota Dokter
+            </button>
           </div>
 
-          <div className="dashboard-grid">
-            <div className="stat-card">
-              <div className="stat-icon info">
-                <Users size={30} />
+          {activeQueueTab !== 'kuota' && (
+            <>
+              <div className="dashboard-grid">
+                <div className="stat-card">
+                  <div className="stat-icon info">
+                    <Users size={30} />
+                  </div>
+                  <div className="stat-content">
+                    <h3>Total Antrean Hari Ini</h3>
+                    <p>{queueStats.total}</p>
+                  </div>
+                </div>
+                <div className="stat-card">
+                  <div className="stat-icon warning">
+                    <Clock size={30} />
+                  </div>
+                  <div className="stat-content">
+                    <h3>Sedang Dilayani</h3>
+                    <p>{queueStats.dilayani}</p>
+                  </div>
+                </div>
+                <div className="stat-card">
+                  <div className="stat-icon success">
+                    <CheckCircle size={30} />
+                  </div>
+                  <div className="stat-content">
+                    <h3>Selesai</h3>
+                    <p>{queueStats.selesai}</p>
+                  </div>
+                </div>
+                <div className="stat-card">
+                  <div className="stat-icon danger">
+                    <Bell size={30} />
+                  </div>
+                  <div className="stat-content">
+                    <h3>Menunggu</h3>
+                    <p>{queueStats.menunggu}</p>
+                  </div>
+                </div>
               </div>
-              <div className="stat-content">
-                <h3>Total Antrean Hari Ini</h3>
-                <p>156</p>
-              </div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-icon warning">
-                <Clock size={30} />
-              </div>
-              <div className="stat-content">
-                <h3>Sedang Dilayani</h3>
-                <p>23</p>
-              </div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-icon success">
-                <CheckCircle size={30} />
-              </div>
-              <div className="stat-content">
-                <h3>Selesai</h3>
-                <p>91</p>
-              </div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-icon danger">
-                <Calendar size={30} />
-              </div>
-              <div className="stat-content">
-                <h3>No Show</h3>
-                <p>12</p>
-              </div>
-            </div>
-          </div>
 
-          <div className="card">
-            <div className="card-header">
-              <h2 className="card-title">Status Antrean Pendaftaran Real-time</h2>
-            </div>
-            <div className="card-body">
-              <div style={{ marginBottom: '15px', display: 'flex', gap: '10px' }}>
-                <button className="btn btn-primary btn-sm">Panggil Antrean Berikutnya</button>
-                <button className="btn btn-outline btn-sm">Refresh</button>
-                <button className="btn btn-outline btn-sm">Cetak Semua</button>
+              <div className="card">
+                <div className="card-header">
+                  <h2 className="card-title">
+                    Status Antrean {activeQueueTab === 'pendaftaran' ? 'Pendaftaran' : 
+                                   activeQueueTab === 'penunjang' ? 'Penunjang (Lab/Radiologi)' :
+                                   activeQueueTab === 'kasir' ? 'Kasir' : 'Apotek'} Real-time
+                  </h2>
+                </div>
+                <div className="card-body">
+                  <div style={{ marginBottom: '15px', display: 'flex', gap: '10px' }}>
+                    <button className="btn btn-outline btn-sm">
+                      <Activity size={16} />
+                      Refresh
+                    </button>
+                    <button className="btn btn-outline btn-sm">Cetak Semua</button>
+                  </div>
+                  <TableWithExport title={`Antrean ${activeQueueTab}`} tableId={`antrean-${activeQueueTab}`}>
+                  <table className="table" id={`antrean-${activeQueueTab}`}>
+                    <thead>
+                      <tr>
+                        <th>No. Antrean</th>
+                        <th>Nama Pasien</th>
+                        <th>Jenis</th>
+                        <th>{activeQueueTab === 'pendaftaran' || activeQueueTab === 'kasir' || activeQueueTab === 'apotek' ? 'Loket' : 'Ruang'}</th>
+                        <th>Waktu Daftar</th>
+                        <th>Estimasi</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {currentQueue.map((item) => (
+                        <tr 
+                          key={item.id} 
+                          style={{ 
+                            background: item.status === 'Dilayani' ? '#e8f4f8' : 
+                                       item.status === 'Selesai' ? '#e8f8e8' : 'transparent' 
+                          }}
+                        >
+                          <td><strong style={{ fontSize: '1.2em' }}>{item.noAntrean}</strong></td>
+                          <td>{item.nama}</td>
+                          <td>{item.jenis}</td>
+                          <td>{item.loket || item.ruang}</td>
+                          <td>{item.waktu}</td>
+                          <td>{item.estimasi}</td>
+                          <td>
+                            <span className={`badge ${
+                              item.status === 'Menunggu' ? 'badge-warning' :
+                              item.status === 'Dilayani' ? 'badge-info' :
+                              'badge-success'
+                            }`}>
+                              {item.status}
+                            </span>
+                          </td>
+                          <td>
+                            {item.status === 'Menunggu' && (
+                              <button 
+                                className="btn btn-primary btn-sm"
+                                onClick={() => handleCallQueue(activeQueueTab, item.id)}
+                              >
+                                <Bell size={14} />
+                                Panggil
+                              </button>
+                            )}
+                            {item.status === 'Dilayani' && (
+                              <button 
+                                className="btn btn-secondary btn-sm"
+                                onClick={() => handleFinishQueue(activeQueueTab, item.id)}
+                              >
+                                <CheckCircle size={14} />
+                                Selesai
+                              </button>
+                            )}
+                            {item.status === 'Selesai' && (
+                              <span style={{ color: '#10b981', fontSize: '12px' }}>✓ Selesai</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  </TableWithExport>
+                </div>
               </div>
-              <TableWithExport title="Antrean Pendaftaran" tableId="antrean-pendaftaran">
-              <table className="table" id="antrean-pendaftaran">
-                <thead>
-                  <tr>
-                    <th>No. Antrean</th>
-                    <th>Nama Pasien</th>
-                    <th>Jenis</th>
-                    <th>Loket</th>
-                    <th>Waktu Daftar</th>
-                    <th>Estimasi</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong style={{ fontSize: '1.2em' }}>A-012</strong></td>
-                    <td>Mayor Budi Santoso</td>
-                    <td>Rawat Jalan</td>
-                    <td>Loket 1</td>
-                    <td>08:30</td>
-                    <td>5 menit</td>
-                    <td><span className="badge badge-warning">Menunggu</span></td>
-                    <td>
-                      <button className="btn btn-primary btn-sm">Panggil</button>
-                    </td>
-                  </tr>
-                  <tr style={{ background: '#e8f4f8' }}>
-                    <td><strong style={{ fontSize: '1.2em' }}>A-013</strong></td>
-                    <td>Kapten Ahmad Fauzi</td>
-                    <td>Rawat Jalan</td>
-                    <td>Loket 1</td>
-                    <td>08:45</td>
-                    <td>-</td>
-                    <td><span className="badge badge-info">Dilayani</span></td>
-                    <td>
-                      <button className="btn btn-secondary btn-sm">Selesai</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong style={{ fontSize: '1.2em' }}>A-014</strong></td>
-                    <td>Kolonel Siti Nurhaliza</td>
-                    <td>BPJS</td>
-                    <td>Loket 2</td>
-                    <td>09:00</td>
-                    <td>15 menit</td>
-                    <td><span className="badge badge-warning">Menunggu</span></td>
-                    <td>
-                      <button className="btn btn-primary btn-sm">Panggil</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong style={{ fontSize: '1.2em' }}>B-008</strong></td>
-                    <td>Serda Hendra Wijaya</td>
-                    <td>Rawat Inap</td>
-                    <td>Loket 3</td>
-                    <td>09:15</td>
-                    <td>25 menit</td>
-                    <td><span className="badge badge-warning">Menunggu</span></td>
-                    <td>
-                      <button className="btn btn-primary btn-sm">Panggil</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              </TableWithExport>
+            </>
+          )}
+
+          {activeQueueTab === 'kuota' && (
+            <div>
+              <div className="card" style={{ marginBottom: '20px' }}>
+                <div className="card-header">
+                  <h2 className="card-title">Kuota Dokter Hari Ini</h2>
+                </div>
+                <div className="card-body">
+                  <div className="dashboard-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
+                    <div className="stat-card">
+                      <div className="stat-icon info">
+                        <Activity size={24} />
+                      </div>
+                      <div className="stat-content">
+                        <h3>Total Dokter Praktik</h3>
+                        <p>24</p>
+                      </div>
+                    </div>
+                    <div className="stat-card">
+                      <div className="stat-icon success">
+                        <CheckCircle size={24} />
+                      </div>
+                      <div className="stat-content">
+                        <h3>Dokter Aktif</h3>
+                        <p>18</p>
+                      </div>
+                    </div>
+                    <div className="stat-card">
+                      <div className="stat-icon warning">
+                        <TrendingUp size={24} />
+                      </div>
+                      <div className="stat-content">
+                        <h3>Total Kuota</h3>
+                        <p>320</p>
+                      </div>
+                    </div>
+                    <div className="stat-card">
+                      <div className="stat-icon danger">
+                        <XCircle size={24} />
+                      </div>
+                      <div className="stat-content">
+                        <h3>Sisa Kuota</h3>
+                        <p>67</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="card">
+                <div className="card-header">
+                  <h2 className="card-title">Detail Kuota Dokter per Poliklinik</h2>
+                </div>
+                <div className="card-body">
+                  <TableWithExport title="Kuota Dokter" tableId="kuota-dokter">
+                  <table className="table" id="kuota-dokter">
+                    <thead>
+                      <tr>
+                        <th>Nama Dokter</th>
+                        <th>Poliklinik</th>
+                        <th>Jam Praktik</th>
+                        <th>Total Kuota</th>
+                        <th>Terdaftar</th>
+                        <th>Sisa Kuota</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>dr. Andi Wijaya, Sp.PD</td>
+                        <td>Poli Umum</td>
+                        <td>08:00 - 12:00</td>
+                        <td>20</td>
+                        <td>18</td>
+                        <td>2</td>
+                        <td><span className="badge badge-warning">Hampir Penuh</span></td>
+                      </tr>
+                      <tr>
+                        <td>dr. Siti Nurhaliza, Sp.JP</td>
+                        <td>Poli Jantung</td>
+                        <td>08:00 - 14:00</td>
+                        <td>15</td>
+                        <td>12</td>
+                        <td>3</td>
+                        <td><span className="badge badge-info">Tersedia</span></td>
+                      </tr>
+                      <tr>
+                        <td>dr. Budi Santoso, Sp.B</td>
+                        <td>Poli Bedah</td>
+                        <td>14:00 - 17:00</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>0</td>
+                        <td><span className="badge badge-danger">Penuh</span></td>
+                      </tr>
+                      <tr>
+                        <td>dr. Dewi Lestari, Sp.A</td>
+                        <td>Poli Anak</td>
+                        <td>08:00 - 14:00</td>
+                        <td>25</td>
+                        <td>15</td>
+                        <td>10</td>
+                        <td><span className="badge badge-success">Tersedia</span></td>
+                      </tr>
+                      <tr>
+                        <td>dr. Ahmad Fauzi, Sp.OG</td>
+                        <td>Poli Kandungan</td>
+                        <td>08:00 - 12:00</td>
+                        <td>12</td>
+                        <td>8</td>
+                        <td>4</td>
+                        <td><span className="badge badge-success">Tersedia</span></td>
+                      </tr>
+                      <tr>
+                        <td>dr. Hendra Gunawan, Sp.M</td>
+                        <td>Poli Mata</td>
+                        <td>08:00 - 12:00</td>
+                        <td>15</td>
+                        <td>14</td>
+                        <td>1</td>
+                        <td><span className="badge badge-warning">Hampir Penuh</span></td>
+                      </tr>
+                      <tr>
+                        <td>dr. Lisa Permata, Sp.THT</td>
+                        <td>Poli THT</td>
+                        <td>13:00 - 17:00</td>
+                        <td>10</td>
+                        <td>6</td>
+                        <td>4</td>
+                        <td><span className="badge badge-success">Tersedia</span></td>
+                      </tr>
+                      <tr>
+                        <td>dr. Rudi Hartono, Sp.P</td>
+                        <td>Poli Paru</td>
+                        <td>08:00 - 12:00</td>
+                        <td>12</td>
+                        <td>9</td>
+                        <td>3</td>
+                        <td><span className="badge badge-info">Tersedia</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </TableWithExport>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
 
