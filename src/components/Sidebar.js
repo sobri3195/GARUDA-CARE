@@ -39,7 +39,13 @@ import {
   Info,
   Send,
   Smartphone,
-  Anchor
+  Anchor,
+  MessageCircle,
+  User,
+  Star,
+  Brain,
+  Wrench,
+  Truck
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -130,6 +136,34 @@ const Sidebar = () => {
         { path: '/tni-ad', icon: Shield, label: 'TNI AD' },
         { path: '/tni-al', icon: Anchor, label: 'TNI AL' },
         { path: '/tni-au', icon: Plane, label: 'TNI AU' }
+      ]
+    },
+    {
+      title: 'Komunikasi Internal',
+      items: [
+        { path: '/chat-internal', icon: MessageCircle, label: 'Chat Dokter-Perawat' },
+        { path: '/forum-klinis', icon: MessageSquare, label: 'Forum Diskusi Klinis' }
+      ]
+    },
+    {
+      title: 'Manajemen Pasien',
+      items: [
+        { path: '/patient-portal', icon: User, label: 'Patient Portal / CRM' },
+        { path: '/patient-feedback', icon: Star, label: 'Survei & Feedback Pasien' }
+      ]
+    },
+    {
+      title: 'Analitik Lanjutan',
+      items: [
+        { path: '/predictive-analytics', icon: Brain, label: 'Predictive Analytics' },
+        { path: '/ai-triage', icon: Activity, label: 'AI Triage Dashboard' }
+      ]
+    },
+    {
+      title: 'Manajemen Aset',
+      items: [
+        { path: '/aset-rumah-sakit', icon: Wrench, label: 'Aset Rumah Sakit' },
+        { path: '/transportasi-logistik', icon: Truck, label: 'Transportasi & Logistik' }
       ]
     }
   ];

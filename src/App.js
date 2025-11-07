@@ -51,6 +51,14 @@ import TNIAD from './pages/TNIAD';
 import TNIAL from './pages/TNIAL';
 import TNIAU from './pages/TNIAU';
 import Rikkes from './pages/Rikkes';
+import ChatInternalMedis from './pages/ChatInternalMedis';
+import ForumKlinis from './pages/ForumKlinis';
+import PatientPortal from './pages/PatientPortal';
+import PatientFeedback from './pages/PatientFeedback';
+import PredictiveAnalytics from './pages/PredictiveAnalytics';
+import AITriage from './pages/AITriage';
+import AsetRumahSakit from './pages/AsetRumahSakit';
+import TransportasiLogistik from './pages/TransportasiLogistik';
 
 function App() {
   return (
@@ -535,6 +543,86 @@ function App() {
                 <div className="content">
                   <Breadcrumb items={[{ label: 'TRIMATRA' }, { label: 'TNI AU' }, { label: 'Rikkes' }]} />
                   <Rikkes />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/chat-internal" element={
+              <>
+                <Header title="Chat Internal Dokter-Perawat" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Komunikasi Internal' }, { label: 'Chat Dokter-Perawat' }]} />
+                  <ChatInternalMedis />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/forum-klinis" element={
+              <>
+                <Header title="Forum Diskusi Kasus Klinis" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Komunikasi Internal' }, { label: 'Forum Diskusi Klinis' }]} />
+                  <ForumKlinis />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/patient-portal" element={
+              <>
+                <Header title="Patient Portal - CRM Kesehatan" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Manajemen Pasien' }, { label: 'Patient Portal / CRM' }]} />
+                  <PatientPortal />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/patient-feedback" element={
+              <>
+                <Header title="Survei & Umpan Balik Pasien" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Manajemen Pasien' }, { label: 'Survei & Feedback Pasien' }]} />
+                  <PatientFeedback />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/predictive-analytics" element={
+              <>
+                <Header title="Predictive Analytics" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Analitik Lanjutan' }, { label: 'Predictive Analytics' }]} />
+                  <PredictiveAnalytics />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/ai-triage" element={
+              <>
+                <Header title="AI Triage Dashboard" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Analitik Lanjutan' }, { label: 'AI Triage Dashboard' }]} />
+                  <AITriage />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/aset-rumah-sakit" element={
+              <>
+                <Header title="Manajemen Aset Rumah Sakit" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Manajemen Aset' }, { label: 'Aset Rumah Sakit' }]} />
+                  <AsetRumahSakit />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/transportasi-logistik" element={
+              <>
+                <Header title="Transportasi & Logistik" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Manajemen Aset' }, { label: 'Transportasi & Logistik' }]} />
+                  <TransportasiLogistik />
                 </div>
                 <Footer />
               </>
