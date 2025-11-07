@@ -1,6 +1,68 @@
 # Changelog - RS Trimatra Update
 
-## Version 2.9.0 - Document Management & Integration Suite - VERIFIED ✅ (Current)
+## Version 2.9.1 - Patient Journey & UX Enhancement (Current)
+
+### 📋 New Features
+**Date: January 2024**
+
+#### 1. 🏥 Alur Pelayanan Pasien Interaktif (Patient Flow Diagram)
+**Component:** `PatientFlowDiagram.js` | **Displayed on:** Dashboard (/)
+
+**Core Features:**
+- ✅ **10-stage patient journey visualization**: Complete flow from registration to discharge
+- ✅ **Vertical flow layout** with clear step-by-step progression
+- ✅ **Interactive hover effects**: Expand to show detailed description of each stage
+- ✅ **Real-time statistics per stage**: Patient counts, waiting times, bed occupancy
+- ✅ **Color-coded stages**: Each stage has unique color for easy identification
+- ✅ **Optional stages marked**: Lab, Radiology, and Inpatient clearly marked as conditional
+- ✅ **Information panel**: Important notes about IGD priority flow, BPJS exemptions, average time
+- ✅ **Responsive design**: Adapts to different screen sizes
+
+**Patient Journey Stages:**
+1. **Registrasi** (Registration) - Patient registration with medical record number
+2. **Anamnesis** (Initial Assessment) - Vital signs and nursing assessment  
+3. **Pemeriksaan Dokter** (Doctor Examination) - Medical consultation and diagnosis
+4. **Laboratorium** (Laboratory) - Lab tests (optional, as needed)
+5. **Radiologi** (Radiology) - Imaging studies (optional, as needed)
+6. **Farmasi** (Pharmacy) - Medication dispensing
+7. **Rawat Inap** (Inpatient) - Hospitalization (optional, as needed)
+8. **Resume Medis** (Medical Resume) - Documentation completion
+9. **Pembayaran** (Payment) - Billing and payment
+10. **Pasien Pulang** (Discharge) - Patient discharge with documents
+
+**Visual Enhancements:**
+- Gradient header with RS Trimatra branding
+- Animated transitions on hover
+- Statistics badges with emoji icons
+- Arrow connectors between stages
+- Information panel with checkmarks
+
+#### 2. 🎨 Updated Favicon
+**File:** `public/favicon.svg`
+
+**Design Elements:**
+- Military blue background (#003d82) - official TNI color
+- White/gold medical cross at center
+- Three gold stars representing tri-service (TNI AD, AL, AU)
+- Heartbeat line for medical emphasis
+- Modern, professional design suitable for military hospital
+- SVG format for crisp rendering at any size
+
+**Improvements over previous:**
+- More distinctive military hospital identity
+- Better visibility at small sizes
+- Clearer symbolism (medical + military)
+- Professional appearance in browser tabs
+
+### 📊 Impact
+- Improved user understanding of patient flow through the hospital
+- Clearer navigation with visual patient journey
+- Enhanced branding with new favicon
+- Better UX for both medical staff and administrators
+
+---
+
+## Version 2.9.0 - Document Management & Integration Suite - VERIFIED ✅
 
 ### 📋 Feature Verification
 **Date: January 2024**
