@@ -5,7 +5,6 @@ const Header = ({ title }) => {
   const [showMessages, setShowMessages] = useState(false);
   const [showQuickActions, setShowQuickActions] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [notificationCount, setNotificationCount] = useState(3);
 
   return (
     <div className="header">
@@ -101,7 +100,7 @@ const Header = ({ title }) => {
                 </div>
               </div>
               <div style={{ padding: '10px', textAlign: 'center', borderTop: '1px solid #eee' }}>
-                <a href="#" style={{ color: '#003d82', fontSize: '13px', textDecoration: 'none' }}>Lihat Semua Pesan</a>
+                <button style={{ color: '#003d82', fontSize: '13px', background: 'none', border: 'none', cursor: 'pointer' }}>Lihat Semua Pesan</button>
               </div>
             </div>
           )}
@@ -154,9 +153,7 @@ const Header = ({ title }) => {
         
         <button className="btn btn-outline btn-sm" style={{ position: 'relative' }} title="Notifikasi">
           <Bell size={16} />
-          {notificationCount > 0 && (
-            <span className="badge badge-danger" style={{ position: 'absolute', top: '-5px', right: '-5px', fontSize: '10px', padding: '2px 5px', minWidth: '18px' }}>{notificationCount}</span>
-          )}
+          <span className="badge badge-danger" style={{ position: 'absolute', top: '-5px', right: '-5px', fontSize: '10px', padding: '2px 5px', minWidth: '18px' }}>3</span>
         </button>
         
         <div className="header-user">
