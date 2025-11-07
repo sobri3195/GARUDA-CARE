@@ -2,7 +2,28 @@
 
 Sistem Informasi Rumah Sakit (SIMRS) komprehensif yang dirancang untuk Rumah Sakit Trimatra dengan fitur lengkap termasuk modul Aerospace Medicine untuk mendukung layanan kesehatan bagi ketiga angkatan (TNI AD, AL, AU).
 
-## ⭐ Fitur Terbaru v2.9.0 - Document Management & Integration Suite
+## ⭐ Fitur Terbaru v2.9.1 - Patient Journey & UX Enhancement
+
+### 🏥 Alur Pelayanan Pasien Interaktif
+Visualisasi lengkap perjalanan pasien dari registrasi hingga pulang:
+- **10 Tahap Pelayanan**: Registrasi → Anamnesis → Pemeriksaan Dokter → Lab → Radiologi → Farmasi → Rawat Inap → Resume Medis → Pembayaran → Pasien Pulang
+- **Statistik Real-time**: Jumlah pasien per tahap, waktu tunggu, okupansi bed
+- **Tahap Opsional**: Lab, Radiologi, dan Rawat Inap sesuai indikasi medis
+- **Hover untuk Detail**: Informasi lengkap setiap tahap dengan deskripsi
+- **Color-coded**: Setiap tahap memiliki warna identitas untuk kemudahan navigasi
+- **Informasi Penting**: Estimasi waktu, alur IGD khusus, keterangan BPJS
+
+### 🎨 Favicon Baru RS Trimatra
+Ikon baru yang lebih representatif untuk rumah sakit militer:
+- Medical cross (putih/emas) di pusat sebagai simbol pelayanan kesehatan
+- Background biru militer (#003d82) - warna resmi TNI
+- 3 bintang emas merepresentasikan tri-angkatan (TNI AD, AL, AU)
+- Heartbeat line untuk penekanan aspek medis
+- Desain modern dan profesional
+
+---
+
+## 🚀 Fitur v2.9.0 - Document Management & Integration Suite
 
 ### 🔔 Pusat Notifikasi Terpadu
 Sistem notifikasi terintegrasi yang menampung alert dari **SEMUA modul** sistem:

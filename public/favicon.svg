@@ -1,25 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="triGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#003d82;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#003d82;stop-opacity:1" />
-    </linearGradient>
-  </defs>
+  <!-- Background circle with military blue -->
+  <circle cx="32" cy="32" r="30" fill="#003d82"/>
+  <circle cx="32" cy="32" r="28" fill="#0055aa"/>
   
-  <!-- Background -->
-  <rect width="64" height="64" rx="12" fill="#003d82"/>
+  <!-- Medical cross in gold -->
+  <rect x="28" y="16" width="8" height="32" fill="#d4af37" rx="1"/>
+  <rect x="16" y="28" width="32" height="8" fill="#d4af37" rx="1"/>
   
-  <!-- Medical Cross -->
-  <rect x="26" y="16" width="12" height="32" fill="#ffffff" rx="2"/>
-  <rect x="16" y="26" width="32" height="12" fill="#ffffff" rx="2"/>
+  <!-- Medical cross white highlight -->
+  <rect x="29" y="17" width="6" height="30" fill="white" rx="0.5"/>
+  <rect x="17" y="29" width="30" height="6" fill="white" rx="0.5"/>
   
-  <!-- Gold border for cross -->
-  <rect x="26" y="16" width="12" height="32" fill="none" stroke="#d4af37" stroke-width="1.5" rx="2"/>
-  <rect x="16" y="26" width="32" height="12" fill="none" stroke="#d4af37" stroke-width="1.5" rx="2"/>
+  <!-- Three stars representing TNI branches (AD, AL, AU) -->
+  <!-- Top star -->
+  <path d="M32 10 L33.5 14 L37.8 14 L34.2 16.5 L35.7 20.5 L32 18 L28.3 20.5 L29.8 16.5 L26.2 14 L30.5 14 Z" fill="#d4af37"/>
   
-  <!-- Tri-service stars (3 branches) -->
-  <circle cx="32" cy="22" r="2.5" fill="#d4af37"/>
-  <circle cx="22" cy="32" r="2.5" fill="#d4af37"/>
-  <circle cx="42" cy="32" r="2.5" fill="#d4af37"/>
+  <!-- Left star -->
+  <path d="M14 32 L15.5 36 L19.8 36 L16.2 38.5 L17.7 42.5 L14 40 L10.3 42.5 L11.8 38.5 L8.2 36 L12.5 36 Z" fill="#d4af37"/>
+  
+  <!-- Right star -->
+  <path d="M50 32 L51.5 36 L55.8 36 L52.2 38.5 L53.7 42.5 L50 40 L46.3 42.5 L47.8 38.5 L44.2 36 L48.5 36 Z" fill="#d4af37"/>
+  
+  <!-- Heartbeat line for medical emphasis -->
+  <path d="M12 52 L18 52 L22 48 L26 56 L30 46 L34 52 L52 52" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

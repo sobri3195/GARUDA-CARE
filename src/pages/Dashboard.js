@@ -1,6 +1,7 @@
 import React from 'react';
 import { Users, Activity, Bed, Clock, AlertCircle, TrendingUp, TrendingDown, Heart, Stethoscope, TestTube } from 'lucide-react';
 import TableWithExport from '../components/TableWithExport';
+import PatientFlowDiagram from '../components/PatientFlowDiagram';
 
 const Dashboard = () => {
   const chartData = {
@@ -88,6 +89,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      <PatientFlowDiagram />
 
       <div className="grid grid-cols-2" style={{ marginBottom: '20px' }}>
         <div className="card">
