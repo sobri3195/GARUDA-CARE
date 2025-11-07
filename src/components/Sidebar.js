@@ -45,7 +45,11 @@ import {
   Star,
   Brain,
   Wrench,
-  Truck
+  Truck,
+  Bell,
+  Calendar,
+  Database,
+  FolderOpen
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -164,6 +168,28 @@ const Sidebar = () => {
       items: [
         { path: '/aset-rumah-sakit', icon: Wrench, label: 'Aset Rumah Sakit' },
         { path: '/transportasi-logistik', icon: Truck, label: 'Transportasi & Logistik' }
+      ]
+    },
+    {
+      title: 'Manajemen Dokumen',
+      items: [
+        { path: '/e-dokumen-sop', icon: FileText, label: 'e-SOP & Dokumen ISO' },
+        { path: '/audit-compliance', icon: ShieldCheck, label: 'Audit & Compliance' },
+        { path: '/arsip-digital', icon: FolderOpen, label: 'Arsip Digital Pasien' }
+      ]
+    },
+    {
+      title: 'Notifikasi & Jadwal',
+      items: [
+        { path: '/pusat-notifikasi', icon: Bell, label: 'Pusat Notifikasi' },
+        { path: '/kalender-operasional', icon: Calendar, label: 'Kalender Operasional' }
+      ]
+    },
+    {
+      title: 'Integrasi Eksternal',
+      items: [
+        { path: '/integrasi-bpjs', icon: Shield, label: 'BPJS Web Service' },
+        { path: '/integrasi-tni', icon: Database, label: 'TNI Health Command' }
       ]
     }
   ];

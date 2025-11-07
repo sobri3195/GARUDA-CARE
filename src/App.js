@@ -59,6 +59,13 @@ import PredictiveAnalytics from './pages/PredictiveAnalytics';
 import AITriage from './pages/AITriage';
 import AsetRumahSakit from './pages/AsetRumahSakit';
 import TransportasiLogistik from './pages/TransportasiLogistik';
+import EDokumenSOP from './pages/eDokumenSOP';
+import AuditCompliance from './pages/AuditCompliance';
+import PusatNotifikasi from './pages/PusatNotifikasi';
+import KalenderOperasional from './pages/KalenderOperasional';
+import ArsipDigital from './pages/ArsipDigital';
+import IntegrasiBPJS from './pages/IntegrasiBPJS';
+import IntegrasiTNI from './pages/IntegrasiTNI';
 
 function App() {
   return (
@@ -623,6 +630,76 @@ function App() {
                 <div className="content">
                   <Breadcrumb items={[{ label: 'Manajemen Aset' }, { label: 'Transportasi & Logistik' }]} />
                   <TransportasiLogistik />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/e-dokumen-sop" element={
+              <>
+                <Header title="e-SOP & Dokumen ISO" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Manajemen Dokumen' }, { label: 'e-SOP & Dokumen ISO' }]} />
+                  <EDokumenSOP />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/audit-compliance" element={
+              <>
+                <Header title="Audit & Compliance Tracker" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Manajemen Dokumen' }, { label: 'Audit & Compliance' }]} />
+                  <AuditCompliance />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/pusat-notifikasi" element={
+              <>
+                <Header title="Pusat Notifikasi" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Notifikasi & Jadwal' }, { label: 'Pusat Notifikasi' }]} />
+                  <PusatNotifikasi />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/kalender-operasional" element={
+              <>
+                <Header title="Kalender Operasional RS" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Notifikasi & Jadwal' }, { label: 'Kalender Operasional' }]} />
+                  <KalenderOperasional />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/arsip-digital" element={
+              <>
+                <Header title="Upload & Arsip Digital Pasien" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Manajemen Dokumen' }, { label: 'Arsip Digital Pasien' }]} />
+                  <ArsipDigital />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/integrasi-bpjs" element={
+              <>
+                <Header title="BPJS Web Service" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Integrasi Eksternal' }, { label: 'BPJS Web Service' }]} />
+                  <IntegrasiBPJS />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/integrasi-tni" element={
+              <>
+                <Header title="TNI Health Command Integration" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Integrasi Eksternal' }, { label: 'TNI Health Command' }]} />
+                  <IntegrasiTNI />
                 </div>
                 <Footer />
               </>
