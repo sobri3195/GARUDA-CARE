@@ -408,6 +408,20 @@ code {
   border-color: var(--primary);
 }
 
+.form-input.error,
+.form-select.error,
+.form-textarea.error {
+  border-color: var(--danger);
+  background-color: #fef2f2;
+}
+
+.error-text {
+  color: var(--danger);
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
 .form-textarea {
   resize: vertical;
   min-height: 100px;
