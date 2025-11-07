@@ -6,12 +6,20 @@ import Breadcrumb from './components/Breadcrumb';
 import Footer from './components/Footer';
 import Dashboard from './pages/Dashboard';
 import Registrasi from './pages/Registrasi';
+import RawatJalan from './pages/RawatJalan';
 import RME from './pages/RME';
+import IGD from './pages/IGD';
 import Farmasi from './pages/Farmasi';
 import Laboratorium from './pages/Laboratorium';
 import Radiologi from './pages/Radiologi';
 import Keperawatan from './pages/Keperawatan';
 import RawatInap from './pages/RawatInap';
+import BedahSentral from './pages/BedahSentral';
+import Kasir from './pages/Kasir';
+import GudangFarmasi from './pages/GudangFarmasi';
+import RekamMedik from './pages/RekamMedik';
+import Inventory from './pages/Inventory';
+import Administrasi from './pages/Administrasi';
 import Operasional from './pages/Operasional';
 import Keuangan from './pages/Keuangan';
 import SDM from './pages/SDM';
@@ -173,6 +181,86 @@ function App() {
                 <div className="content">
                   <Breadcrumb items={[{ label: 'Pelayanan' }, { label: 'Aerospace Medicine' }]} />
                   <AerospaceMedicine />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/rawat-jalan" element={
+              <>
+                <Header title="Rawat Jalan" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan' }, { label: 'Rawat Jalan' }]} />
+                  <RawatJalan />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/igd" element={
+              <>
+                <Header title="IGD (Instalasi Gawat Darurat)" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan' }, { label: 'IGD' }]} />
+                  <IGD />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/bedah-sentral" element={
+              <>
+                <Header title="Bedah Sentral" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan' }, { label: 'Bedah Sentral' }]} />
+                  <BedahSentral />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/kasir" element={
+              <>
+                <Header title="Kasir" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Administrasi' }, { label: 'Kasir' }]} />
+                  <Kasir />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/gudang-farmasi" element={
+              <>
+                <Header title="Gudang Farmasi" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan' }, { label: 'Gudang Farmasi' }]} />
+                  <GudangFarmasi />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/rekam-medik" element={
+              <>
+                <Header title="Rekam Medik" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Administrasi' }, { label: 'Rekam Medik' }]} />
+                  <RekamMedik />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/inventory" element={
+              <>
+                <Header title="Inventory" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Administrasi' }, { label: 'Inventory' }]} />
+                  <Inventory />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/administrasi" element={
+              <>
+                <Header title="Sistem Administrasi" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Administrasi' }, { label: 'Sistem Administrasi' }]} />
+                  <Administrasi />
                 </div>
                 <Footer />
               </>
