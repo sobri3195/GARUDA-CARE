@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { UserPlus, Search, QrCode, Calendar, ExternalLink } from 'lucide-react';
+import { UserPlus, Search, QrCode, Calendar, ExternalLink, Clock, Users, CheckCircle } from 'lucide-react';
 
 const Registrasi = () => {
   const [activeTab, setActiveTab] = useState('registrasi');
+  const [jenisRegistrasi, setJenisRegistrasi] = useState('rawatjalan');
   const [formData, setFormData] = useState({
     nik: '',
     nrp: '',
@@ -60,21 +61,68 @@ const Registrasi = () => {
       </div>
 
       {activeTab === 'registrasi' && (
-        <div className="card">
-          <div className="card-header">
-            <h2 className="card-title">Registrasi Pasien Baru / Lama</h2>
-          </div>
-          <div className="card-body">
-            <div style={{ marginBottom: '20px' }}>
-              <button className="btn btn-primary" style={{ marginRight: '10px' }}>
-                <Search size={16} />
-                Cari Pasien Lama (NIK/NRP)
-              </button>
-              <button className="btn btn-outline">
-                <QrCode size={16} />
-                Scan QR Code
-              </button>
+        <div>
+          <div className="card" style={{ marginBottom: '20px' }}>
+            <div className="card-header">
+              <h2 className="card-title">Jenis Pendaftaran</h2>
             </div>
+            <div className="card-body">
+              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                <button 
+                  className={`btn ${jenisRegistrasi === 'rawatjalan' ? 'btn-primary' : 'btn-outline'}`}
+                  onClick={() => setJenisRegistrasi('rawatjalan')}
+                >
+                  Rawat Jalan
+                </button>
+                <button 
+                  className={`btn ${jenisRegistrasi === 'rawatinap' ? 'btn-primary' : 'btn-outline'}`}
+                  onClick={() => setJenisRegistrasi('rawatinap')}
+                >
+                  Rawat Inap
+                </button>
+                <button 
+                  className={`btn ${jenisRegistrasi === 'igd' ? 'btn-primary' : 'btn-outline'}`}
+                  onClick={() => setJenisRegistrasi('igd')}
+                >
+                  Gawat Darurat (IGD)
+                </button>
+                <button 
+                  className={`btn ${jenisRegistrasi === 'penunjang' ? 'btn-primary' : 'btn-outline'}`}
+                  onClick={() => setJenisRegistrasi('penunjang')}
+                >
+                  Penunjang (Lab/Radiologi)
+                </button>
+                <button 
+                  className={`btn ${jenisRegistrasi === 'bpjs' ? 'btn-primary' : 'btn-outline'}`}
+                  onClick={() => setJenisRegistrasi('bpjs')}
+                >
+                  BPJS - SEP Otomatis
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="card-header">
+              <h2 className="card-title">
+                {jenisRegistrasi === 'rawatjalan' && 'Pendaftaran Rawat Jalan'}
+                {jenisRegistrasi === 'rawatinap' && 'Pendaftaran Rawat Inap'}
+                {jenisRegistrasi === 'igd' && 'Pendaftaran Gawat Darurat'}
+                {jenisRegistrasi === 'penunjang' && 'Pendaftaran Penunjang'}
+                {jenisRegistrasi === 'bpjs' && 'Pendaftaran BPJS dengan SEP Otomatis'}
+              </h2>
+            </div>
+            <div className="card-body">
+              <div style={{ marginBottom: '20px' }}>
+                <button className="btn btn-primary" style={{ marginRight: '10px' }}>
+                  <Search size={16} />
+                  Cari Pasien Lama (NIK/NRP)
+                </button>
+                <button className="btn btn-outline">
+                  <QrCode size={16} />
+                  Scan QR Code
+                </button>
+              </div>
 
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-2">
@@ -279,16 +327,25 @@ const Registrasi = () => {
                 </button>
               </div>
             </form>
+            </div>
           </div>
         </div>
       )}
 
       {activeTab === 'antrean' && (
         <div>
+          <div className="tabs" style={{ marginBottom: '20px' }}>
+            <button className="tab active">Antrean Pendaftaran</button>
+            <button className="tab">Antrean Penunjang</button>
+            <button className="tab">Antrean Kasir</button>
+            <button className="tab">Antrean Apotek</button>
+            <button className="tab">Kuota Dokter</button>
+          </div>
+
           <div className="dashboard-grid">
             <div className="stat-card">
               <div className="stat-icon info">
-                <Calendar size={30} />
+                <Users size={30} />
               </div>
               <div className="stat-content">
                 <h3>Total Antrean Hari Ini</h3>
@@ -297,7 +354,7 @@ const Registrasi = () => {
             </div>
             <div className="stat-card">
               <div className="stat-icon warning">
-                <Calendar size={30} />
+                <Clock size={30} />
               </div>
               <div className="stat-content">
                 <h3>Sedang Dilayani</h3>
@@ -305,8 +362,8 @@ const Registrasi = () => {
               </div>
             </div>
             <div className="stat-card">
-              <div className="stat-icon secondary">
-                <Calendar size={30} />
+              <div className="stat-icon success">
+                <CheckCircle size={30} />
               </div>
               <div className="stat-content">
                 <h3>Selesai</h3>
@@ -326,46 +383,70 @@ const Registrasi = () => {
 
           <div className="card">
             <div className="card-header">
-              <h2 className="card-title">Status Antrean Real-time</h2>
+              <h2 className="card-title">Status Antrean Pendaftaran Real-time</h2>
             </div>
             <div className="card-body">
+              <div style={{ marginBottom: '15px', display: 'flex', gap: '10px' }}>
+                <button className="btn btn-primary btn-sm">Panggil Antrean Berikutnya</button>
+                <button className="btn btn-outline btn-sm">Refresh</button>
+              </div>
               <table className="table">
                 <thead>
                   <tr>
                     <th>No. Antrean</th>
                     <th>Nama Pasien</th>
-                    <th>Poliklinik</th>
+                    <th>Jenis</th>
+                    <th>Loket</th>
                     <th>Waktu Daftar</th>
+                    <th>Estimasi</th>
                     <th>Status</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>A-012</td>
+                    <td><strong style={{ fontSize: '1.2em' }}>A-012</strong></td>
                     <td>Mayor Budi Santoso</td>
-                    <td>Poli Umum</td>
+                    <td>Rawat Jalan</td>
+                    <td>Loket 1</td>
                     <td>08:30</td>
+                    <td>5 menit</td>
                     <td><span className="badge badge-warning">Menunggu</span></td>
                     <td>
                       <button className="btn btn-primary btn-sm">Panggil</button>
                     </td>
                   </tr>
-                  <tr>
-                    <td>A-013</td>
+                  <tr style={{ background: '#e8f4f8' }}>
+                    <td><strong style={{ fontSize: '1.2em' }}>A-013</strong></td>
                     <td>Kapten Ahmad Fauzi</td>
-                    <td>Poli Umum</td>
+                    <td>Rawat Jalan</td>
+                    <td>Loket 1</td>
                     <td>08:45</td>
+                    <td>-</td>
                     <td><span className="badge badge-info">Dilayani</span></td>
                     <td>
                       <button className="btn btn-secondary btn-sm">Selesai</button>
                     </td>
                   </tr>
                   <tr>
-                    <td>B-008</td>
+                    <td><strong style={{ fontSize: '1.2em' }}>A-014</strong></td>
                     <td>Kolonel Siti Nurhaliza</td>
-                    <td>Poli Jantung</td>
+                    <td>BPJS</td>
+                    <td>Loket 2</td>
                     <td>09:00</td>
+                    <td>15 menit</td>
+                    <td><span className="badge badge-warning">Menunggu</span></td>
+                    <td>
+                      <button className="btn btn-primary btn-sm">Panggil</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong style={{ fontSize: '1.2em' }}>B-008</strong></td>
+                    <td>Serda Hendra Wijaya</td>
+                    <td>Rawat Inap</td>
+                    <td>Loket 3</td>
+                    <td>09:15</td>
+                    <td>25 menit</td>
                     <td><span className="badge badge-warning">Menunggu</span></td>
                     <td>
                       <button className="btn btn-primary btn-sm">Panggil</button>

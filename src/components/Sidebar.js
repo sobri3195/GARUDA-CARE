@@ -16,7 +16,13 @@ import {
   BarChart3,
   Settings,
   Plane,
-  Building2
+  Building2,
+  Ambulance,
+  Scissors,
+  CreditCard,
+  Package,
+  Archive,
+  Clipboard
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -28,12 +34,16 @@ const Sidebar = () => {
       items: [
         { path: '/', icon: LayoutDashboard, label: 'Dashboard' },
         { path: '/registrasi', icon: Users, label: 'Registrasi & Antrean' },
+        { path: '/rawat-jalan', icon: Stethoscope, label: 'Rawat Jalan' },
+        { path: '/igd', icon: Ambulance, label: 'IGD' },
+        { path: '/rawat-inap', icon: Bed, label: 'Rawat Inap' },
+        { path: '/bedah-sentral', icon: Scissors, label: 'Bedah Sentral' },
         { path: '/rme', icon: FileText, label: 'Rekam Medis' },
         { path: '/farmasi', icon: Pill, label: 'Farmasi' },
+        { path: '/gudang-farmasi', icon: Package, label: 'Gudang Farmasi' },
         { path: '/laboratorium', icon: TestTube, label: 'Laboratorium' },
         { path: '/radiologi', icon: Activity, label: 'Radiologi' },
         { path: '/keperawatan', icon: Stethoscope, label: 'Keperawatan' },
-        { path: '/rawat-inap', icon: Bed, label: 'Rawat Inap' },
         { path: '/aerospace', icon: Plane, label: 'Aerospace Medicine' },
         { path: '/telemedis', icon: MessageSquare, label: 'Telemedis' }
       ]
@@ -41,6 +51,10 @@ const Sidebar = () => {
     {
       title: 'Administrasi',
       items: [
+        { path: '/administrasi', icon: Clipboard, label: 'Sistem Administrasi' },
+        { path: '/kasir', icon: CreditCard, label: 'Kasir' },
+        { path: '/rekam-medik', icon: Archive, label: 'Rekam Medik' },
+        { path: '/inventory', icon: Package, label: 'Inventory' },
         { path: '/operasional', icon: Settings, label: 'Operasional' },
         { path: '/keuangan', icon: DollarSign, label: 'Keuangan' },
         { path: '/mutu', icon: ShieldCheck, label: 'Mutu & Keselamatan' },
