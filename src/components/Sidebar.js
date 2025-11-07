@@ -27,7 +27,15 @@ import {
   Warehouse,
   ShoppingCart,
   Calculator,
-  Wallet
+  Wallet,
+  Cross,
+  Baby,
+  Utensils,
+  Monitor,
+  ClipboardList,
+  Droplet,
+  Sparkles,
+  Heart
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -51,6 +59,27 @@ const Sidebar = () => {
         { path: '/keperawatan', icon: Stethoscope, label: 'Keperawatan' },
         { path: '/aerospace', icon: Plane, label: 'Aerospace Medicine' },
         { path: '/telemedis', icon: MessageSquare, label: 'Telemedis' }
+      ]
+    },
+    {
+      title: 'Pelayanan 1',
+      items: [
+        { path: '/ambulans', icon: Ambulance, label: 'Ambulans' },
+        { path: '/pemulasaran-jenazah', icon: Cross, label: 'Pemulasaran Jenazah' },
+        { path: '/persalinan', icon: Baby, label: 'Persalinan' },
+        { path: '/gizi', icon: Utensils, label: 'Gizi' },
+        { path: '/sistem-informasi-eksekutif', icon: Monitor, label: 'Sistem Informasi Eksekutif' },
+        { path: '/asuhan-keperawatan', icon: ClipboardList, label: 'Asuhan Keperawatan' }
+      ]
+    },
+    {
+      title: 'Pelayanan 2',
+      items: [
+        { path: '/sterilisasi', icon: Sparkles, label: 'Sterilisasi' },
+        { path: '/perawatan-intensif', icon: Heart, label: 'Perawatan Intensif (ICU)' },
+        { path: '/bank-darah', icon: Droplet, label: 'Bank Darah' },
+        { path: '/rehabilitasi-medik', icon: Activity, label: 'Rehabilitasi Medik' },
+        { path: '/anestesi', icon: Pill, label: 'Anestesi' }
       ]
     },
     {

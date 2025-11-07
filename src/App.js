@@ -32,6 +32,17 @@ import Asuransi from './pages/Asuransi';
 import GudangUmum from './pages/GudangUmum';
 import Pengadaan from './pages/Pengadaan';
 import Akuntansi from './pages/Akuntansi';
+import Ambulans from './pages/Ambulans';
+import PemulasaranJenazah from './pages/PemulasaranJenazah';
+import Persalinan from './pages/Persalinan';
+import Gizi from './pages/Gizi';
+import SistemInformasiEksekutif from './pages/SistemInformasiEksekutif';
+import AsuhanKeperawatan from './pages/AsuhanKeperawatan';
+import Sterilisasi from './pages/Sterilisasi';
+import PerawatanIntensif from './pages/PerawatanIntensif';
+import BankDarah from './pages/BankDarah';
+import RehabilitasiMedik from './pages/RehabilitasiMedik';
+import Anestesi from './pages/Anestesi';
 
 function App() {
   return (
@@ -316,6 +327,116 @@ function App() {
                 <div className="content">
                   <Breadcrumb items={[{ label: 'Back Office' }, { label: 'Manajemen Keuangan' }]} />
                   <KeuanganManajemen />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/ambulans" element={
+              <>
+                <Header title="Ambulans" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan 1' }, { label: 'Ambulans' }]} />
+                  <Ambulans />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/pemulasaran-jenazah" element={
+              <>
+                <Header title="Pemulasaran Jenazah" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan 1' }, { label: 'Pemulasaran Jenazah' }]} />
+                  <PemulasaranJenazah />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/persalinan" element={
+              <>
+                <Header title="Persalinan" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan 1' }, { label: 'Persalinan' }]} />
+                  <Persalinan />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/gizi" element={
+              <>
+                <Header title="Gizi" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan 1' }, { label: 'Gizi' }]} />
+                  <Gizi />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/sistem-informasi-eksekutif" element={
+              <>
+                <Header title="Sistem Informasi Eksekutif" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan 1' }, { label: 'Sistem Informasi Eksekutif' }]} />
+                  <SistemInformasiEksekutif />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/asuhan-keperawatan" element={
+              <>
+                <Header title="Asuhan Keperawatan" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan 1' }, { label: 'Asuhan Keperawatan' }]} />
+                  <AsuhanKeperawatan />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/sterilisasi" element={
+              <>
+                <Header title="Sterilisasi" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan 2' }, { label: 'Sterilisasi' }]} />
+                  <Sterilisasi />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/perawatan-intensif" element={
+              <>
+                <Header title="Perawatan Intensif (ICU)" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan 2' }, { label: 'Perawatan Intensif' }]} />
+                  <PerawatanIntensif />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/bank-darah" element={
+              <>
+                <Header title="Bank Darah" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan 2' }, { label: 'Bank Darah' }]} />
+                  <BankDarah />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/rehabilitasi-medik" element={
+              <>
+                <Header title="Rehabilitasi Medik" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan 2' }, { label: 'Rehabilitasi Medik' }]} />
+                  <RehabilitasiMedik />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/anestesi" element={
+              <>
+                <Header title="Anestesi" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Pelayanan 2' }, { label: 'Anestesi' }]} />
+                  <Anestesi />
                 </div>
                 <Footer />
               </>
