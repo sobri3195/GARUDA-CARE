@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileText, ClipboardList, CheckSquare, UserCheck, Pill, BookOpen } from 'lucide-react';
+import { } from 'lucide-react';
 
 const AsuhanKeperawatan = () => {
   const [activeTab, setActiveTab] = useState('implementasi');

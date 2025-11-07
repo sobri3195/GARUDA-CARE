@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Baby, Heart, FileText, Activity } from 'lucide-react';
+import { Baby, Heart } from 'lucide-react';
 
 const Persalinan = () => {
   const [activeTab, setActiveTab] = useState('abortus');

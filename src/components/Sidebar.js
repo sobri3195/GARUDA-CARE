@@ -35,7 +35,10 @@ import {
   ClipboardList,
   Droplet,
   Sparkles,
-  Heart
+  Heart,
+  Info,
+  Send,
+  Smartphone
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -109,6 +112,15 @@ const Sidebar = () => {
       title: 'Kepegawaian',
       items: [
         { path: '/sdm', icon: UserCog, label: 'SDM & Jadwal' }
+      ]
+    },
+    {
+      title: 'Informasi',
+      items: [
+        { path: '/informasi', icon: Info, label: 'Informasi' },
+        { path: '/sms-gateway', icon: Send, label: 'SMS Gateway & Email' },
+        { path: '/mobile-patients', icon: Smartphone, label: 'Mobile Patients' },
+        { path: '/mobile-doctor', icon: Stethoscope, label: 'Mobile Doctor' }
       ]
     }
   ];
