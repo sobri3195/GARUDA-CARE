@@ -22,11 +22,16 @@ import Inventory from './pages/Inventory';
 import Administrasi from './pages/Administrasi';
 import Operasional from './pages/Operasional';
 import Keuangan from './pages/Keuangan';
+import KeuanganManajemen from './pages/KeuanganManajemen';
 import SDM from './pages/SDM';
 import Mutu from './pages/Mutu';
 import Telemedis from './pages/Telemedis';
 import Analitik from './pages/Analitik';
 import AerospaceMedicine from './pages/AerospaceMedicine';
+import Asuransi from './pages/Asuransi';
+import GudangUmum from './pages/GudangUmum';
+import Pengadaan from './pages/Pengadaan';
+import Akuntansi from './pages/Akuntansi';
 
 function App() {
   return (
@@ -261,6 +266,56 @@ function App() {
                 <div className="content">
                   <Breadcrumb items={[{ label: 'Administrasi' }, { label: 'Sistem Administrasi' }]} />
                   <Administrasi />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/asuransi" element={
+              <>
+                <Header title="Asuransi Penjamin" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Back Office' }, { label: 'Asuransi Penjamin' }]} />
+                  <Asuransi />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/gudang-umum" element={
+              <>
+                <Header title="Gudang Umum" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Back Office' }, { label: 'Gudang Umum' }]} />
+                  <GudangUmum />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/pengadaan" element={
+              <>
+                <Header title="Pengadaan/Pembelian" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Back Office' }, { label: 'Pengadaan/Pembelian' }]} />
+                  <Pengadaan />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/akuntansi" element={
+              <>
+                <Header title="Akuntansi" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Back Office' }, { label: 'Akuntansi' }]} />
+                  <Akuntansi />
+                </div>
+                <Footer />
+              </>
+            } />
+            <Route path="/keuangan-manajemen" element={
+              <>
+                <Header title="Manajemen Keuangan" />
+                <div className="content">
+                  <Breadcrumb items={[{ label: 'Back Office' }, { label: 'Manajemen Keuangan' }]} />
+                  <KeuanganManajemen />
                 </div>
                 <Footer />
               </>
