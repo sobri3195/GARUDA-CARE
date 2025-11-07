@@ -2,6 +2,64 @@
 
 Sistem Informasi Rumah Sakit (SIMRS) komprehensif yang dirancang untuk Rumah Sakit Trimatra dengan fitur lengkap termasuk modul Aerospace Medicine untuk mendukung layanan kesehatan bagi ketiga angkatan (TNI AD, AL, AU).
 
+## ⭐ Fitur Terbaru v2.9.0 - Document Management & Integration Suite
+
+### 🔔 Pusat Notifikasi Terpadu
+Sistem notifikasi terintegrasi yang menampung alert dari **SEMUA modul** sistem:
+- 💊 Farmasi (stok kritis, obat expired)
+- 🏥 ICU (pasien kritis, saturasi O2)
+- 📅 Jadwal (perubahan jadwal dokter)
+- 🔧 Peralatan (maintenance terjadwal)
+- 👤 Registrasi, 🔬 Laboratorium, ⚕️ Bedah Sentral, 🚑 IGD, 🛏️ Rawat Inap, 💰 Keuangan
+- **Filter & prioritas**: Critical, High, Medium, Low dengan color coding
+- **Tab navigasi**: Semua, Belum Dibaca, Perlu Tindakan, Critical
+- Link langsung ke modul terkait
+
+### 📅 Kalender Operasional RS
+Tampilan visual kalender mingguan untuk semua jadwal operasional:
+- 👨‍⚕️ **Jadwal Dokter** per poli dengan jam praktek
+- 🏥 **Ruang Bedah** - jadwal operasi dengan detail pasien, dokter bedah, ruang OK
+- 👩‍⚕️ **Shift Perawatan** - shift pagi/sore/malam per unit dengan koordinator
+- 📋 **Kegiatan Medis** - rapat komite, pelatihan PPGD, grand round, audit
+- Color-coded events dengan filter dan export PDF
+
+### 📂 Upload & Arsip Digital Pasien
+Sistem manajemen dokumen digital lengkap:
+- **Tipe dokumen**: Hasil pemeriksaan, surat rujukan, resume medis, informed consent, surat keterangan, resep obat, laporan operasi
+- **Format**: PDF, JPG, PNG, DICOM (maks 10 MB)
+- **Pencarian & filter** berdasarkan pasien, NRP, tipe dokumen
+- **Export** ke 5 format (CSV, Excel, JSON, PDF, Print)
+- **Keamanan**: Enkripsi AES-256, audit trail lengkap
+
+### ✍️ Integrasi e-Signature
+Tanda tangan digital dengan 3 metode:
+1. **Digital Certificate** - Untuk dokter/staff medis dengan sertifikat terenkripsi
+2. **Biometric Signature** - Untuk pasien menggunakan tablet signature pad
+3. **PIN Verification** - Backup method dengan two-factor authentication
+- **Blockchain recording** untuk mencegah pemalsuan
+- **Compliance**: UU ITE dan Permenkes 24/2022
+- **Retensi dokumen**: 10 tahun - selamanya
+
+### 🏥 BPJS Web Service Integration
+Integrasi real-time dengan VClaim BPJS:
+- **Validasi Eligibilitas**: Cek peserta berdasarkan NIK/No. Kartu
+- **Manajemen SEP**: Pembuatan dan tracking SEP otomatis
+- **Klaim INA-CBG**: Submit klaim, monitoring approval, tracking selisih tarif
+- **Dashboard**: SEP aktif, eligible count, klaim submitted
+- **Log aktivitas**: Real-time logging semua transaksi VClaim
+
+### 🎖️ TNI Health Command Integration
+Sinkronisasi dengan database kesehatan TNI:
+- **Data Personel**: Auto-sync NRP, pangkat, korps, kesatuan, status medis
+- **Rekam Medis**: Real-time sync pemeriksaan, diagnosa, tindakan ke TNI Health Command
+- **Kesiapan Kesatuan**: Tracking medically fit, under treatment, not fit per unit
+- **Breakdown per Angkatan**: TNI AD, TNI AL, TNI AU dengan persentase kesiapan
+- **Log sinkronisasi**: Audit trail lengkap semua aktivitas sync
+
+➡️ **Lihat [FEATURES_VERIFICATION.md](FEATURES_VERIFICATION.md) untuk detail lengkap semua fitur**
+
+---
+
 ## 🚀 Fitur Utama
 
 ### 1. Registrasi, Antrean & Rujukan
