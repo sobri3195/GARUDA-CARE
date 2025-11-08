@@ -141,8 +141,10 @@ const TableWithExport = ({ title, children, tableId }) => {
           <span>PDF</span>
         </button>
       </div>
-      <div id={tableId || 'export-table'}>
-        {children}
+      <div className="table-wrapper">
+        <div id={tableId || 'export-table'}>
+          {children}
+        </div>
       </div>
     </div>
   );

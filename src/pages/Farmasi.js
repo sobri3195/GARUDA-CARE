@@ -3,6 +3,8 @@ import { Pill, Package, AlertTriangle, FileText } from 'lucide-react';
 
 const Farmasi = () => {
   const [activeTab, setActiveTab] = useState('resep');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFilter, setSelectedFilter] = useState('');
 
   return (
     <div>
@@ -79,7 +81,8 @@ const Farmasi = () => {
               <h2 className="card-title">Antrean E-Resep</h2>
             </div>
             <div className="card-body">
-              <table className="table">
+              <div className="table-wrapper">
+                <table className="table">
                 <thead>
                   <tr>
                     <th>No. Resep</th>
@@ -123,6 +126,7 @@ const Farmasi = () => {
                   </tr>
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
 
@@ -306,10 +310,13 @@ const Farmasi = () => {
                   className="form-input" 
                   placeholder="Cari obat..."
                   style={{ maxWidth: '400px' }}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
               </div>
 
-              <table className="table">
+              <div className="table-wrapper">
+                <table className="table">
                 <thead>
                   <tr>
                     <th>Nama Obat</th>
@@ -379,6 +386,7 @@ const Farmasi = () => {
                   </tr>
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
 
@@ -391,7 +399,8 @@ const Farmasi = () => {
                 Monitoring suhu otomatis via IoT sensor untuk obat-obatan yang memerlukan penyimpanan khusus
               </div>
 
-              <table className="table">
+              <div className="table-wrapper">
+                <table className="table">
                 <thead>
                   <tr>
                     <th>Lokasi</th>
@@ -425,6 +434,7 @@ const Farmasi = () => {
                   </tr>
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         </div>
@@ -443,14 +453,20 @@ const Farmasi = () => {
 
             <div style={{ marginBottom: '20px' }}>
               <strong>Filter:</strong>
-              <select className="form-select" style={{ maxWidth: '300px', marginLeft: '10px' }}>
-                <option>Semua Jenis</option>
-                <option>Narkotika</option>
-                <option>Psikotropika</option>
+              <select 
+                className="form-select" 
+                style={{ maxWidth: '300px', marginLeft: '10px' }}
+                value={selectedFilter}
+                onChange={(e) => setSelectedFilter(e.target.value)}
+              >
+                <option value="">Semua Jenis</option>
+                <option value="narkotika">Narkotika</option>
+                <option value="psikotropika">Psikotropika</option>
               </select>
             </div>
 
-            <table className="table">
+            <div className="table-wrapper">
+              <table className="table">
               <thead>
                 <tr>
                   <th>Tanggal</th>
@@ -499,9 +515,10 @@ const Farmasi = () => {
                   <td>Apt. Siti & Ani</td>
                 </tr>
               </tbody>
-            </table>
+              </table>
+              </div>
 
-            <div style={{ marginTop: '20px', padding: '15px', background: '#f3f4f6', borderRadius: '8px' }}>
+              <div style={{ marginTop: '20px', padding: '15px', background: '#f3f4f6', borderRadius: '8px' }}>
               <strong>Stok Narkotika/Psikotropika Saat Ini:</strong>
               <ul style={{ marginTop: '10px', marginLeft: '20px' }}>
                 <li>Morphine 10mg/ml Ampul: 147 ampul</li>
