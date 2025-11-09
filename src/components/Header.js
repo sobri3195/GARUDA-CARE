@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bell, Search, MessageSquare, Settings, Zap, X } from 'lucide-react';
 
 const Header = ({ title }) => {
@@ -8,6 +8,29 @@ const Header = ({ title }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const closeAllDropdowns = () => {
+    setShowMessages(false);
+    setShowQuickActions(false);
+    setShowSettings(false);
+    setShowSearch(false);
+    setShowNotifications(false);
+  };
+
+  const toggleDropdown = (setter, currentState) => {
+    closeAllDropdowns();
+    setter(!currentState);
+  };
 
   return (
     <div className="header">
@@ -16,23 +39,27 @@ const Header = ({ title }) => {
       <div className="header-actions">
         <div style={{ position: 'relative' }}>
           <button 
-            className="btn btn-outline btn-sm" 
-            onClick={() => setShowSearch(!showSearch)}
+            className="btn btn-outline btn-sm header-icon-btn" 
+            onClick={() => toggleDropdown(setShowSearch, showSearch)}
             title="Pencarian"
           >
             <Search size={16} />
           </button>
           {showSearch && (
-            <div style={{
-              position: 'absolute',
-              top: '40px',
-              right: '0',
+            <div className="header-dropdown" style={{
+              position: isMobile ? 'fixed' : 'absolute',
+              top: isMobile ? 'auto' : '40px',
+              bottom: isMobile ? '10px' : 'auto',
+              right: isMobile ? '10px' : '0',
+              left: isMobile ? '10px' : 'auto',
               backgroundColor: 'white',
               border: '1px solid #ddd',
               borderRadius: '8px',
               boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-              width: '350px',
-              zIndex: 1000
+              width: isMobile ? 'auto' : '350px',
+              maxHeight: isMobile ? '70vh' : 'auto',
+              overflowY: 'auto',
+              zIndex: 1100
             }}>
               <div style={{ padding: '15px', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <strong>Pencarian Global</strong>
@@ -77,23 +104,25 @@ const Header = ({ title }) => {
 
         <div style={{ position: 'relative' }}>
           <button 
-            className="btn btn-outline btn-sm" 
-            onClick={() => setShowQuickActions(!showQuickActions)}
+            className="btn btn-outline btn-sm header-icon-btn" 
+            onClick={() => toggleDropdown(setShowQuickActions, showQuickActions)}
             title="Quick Actions"
           >
             <Zap size={16} />
           </button>
           {showQuickActions && (
-            <div style={{
-              position: 'absolute',
-              top: '40px',
-              right: '0',
+            <div className="header-dropdown" style={{
+              position: isMobile ? 'fixed' : 'absolute',
+              top: isMobile ? 'auto' : '40px',
+              bottom: isMobile ? '10px' : 'auto',
+              right: isMobile ? '10px' : '0',
+              left: isMobile ? '10px' : 'auto',
               backgroundColor: 'white',
               border: '1px solid #ddd',
               borderRadius: '8px',
               boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-              width: '250px',
-              zIndex: 1000
+              width: isMobile ? 'auto' : '250px',
+              zIndex: 1100
             }}>
               <div style={{ padding: '15px', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <strong>Quick Actions</strong>
@@ -119,24 +148,29 @@ const Header = ({ title }) => {
 
         <div style={{ position: 'relative' }}>
           <button 
-            className="btn btn-outline btn-sm" 
-            onClick={() => setShowMessages(!showMessages)}
+            className="btn btn-outline btn-sm header-icon-btn" 
+            onClick={() => toggleDropdown(setShowMessages, showMessages)}
             title="Pesan"
+            style={{ position: 'relative' }}
           >
             <MessageSquare size={16} />
             <span className="badge badge-danger" style={{ position: 'absolute', top: '-5px', right: '-5px', fontSize: '10px', padding: '2px 5px', minWidth: '18px' }}>5</span>
           </button>
           {showMessages && (
-            <div style={{
-              position: 'absolute',
-              top: '40px',
-              right: '0',
+            <div className="header-dropdown" style={{
+              position: isMobile ? 'fixed' : 'absolute',
+              top: isMobile ? 'auto' : '40px',
+              bottom: isMobile ? '10px' : 'auto',
+              right: isMobile ? '10px' : '0',
+              left: isMobile ? '10px' : 'auto',
               backgroundColor: 'white',
               border: '1px solid #ddd',
               borderRadius: '8px',
               boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-              width: '300px',
-              zIndex: 1000
+              width: isMobile ? 'auto' : '300px',
+              maxHeight: isMobile ? '70vh' : 'auto',
+              overflowY: 'auto',
+              zIndex: 1100
             }}>
               <div style={{ padding: '15px', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <strong>Pesan (5)</strong>
@@ -168,23 +202,25 @@ const Header = ({ title }) => {
 
         <div style={{ position: 'relative' }}>
           <button 
-            className="btn btn-outline btn-sm" 
-            onClick={() => setShowSettings(!showSettings)}
+            className="btn btn-outline btn-sm header-icon-btn" 
+            onClick={() => toggleDropdown(setShowSettings, showSettings)}
             title="Pengaturan"
           >
             <Settings size={16} />
           </button>
           {showSettings && (
-            <div style={{
-              position: 'absolute',
-              top: '40px',
-              right: '0',
+            <div className="header-dropdown" style={{
+              position: isMobile ? 'fixed' : 'absolute',
+              top: isMobile ? 'auto' : '40px',
+              bottom: isMobile ? '10px' : 'auto',
+              right: isMobile ? '10px' : '0',
+              left: isMobile ? '10px' : 'auto',
               backgroundColor: 'white',
               border: '1px solid #ddd',
               borderRadius: '8px',
               boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-              width: '220px',
-              zIndex: 1000
+              width: isMobile ? 'auto' : '220px',
+              zIndex: 1100
             }}>
               <div style={{ padding: '15px', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <strong>Pengaturan</strong>
@@ -213,25 +249,29 @@ const Header = ({ title }) => {
         
         <div style={{ position: 'relative' }}>
           <button 
-            className="btn btn-outline btn-sm" 
+            className="btn btn-outline btn-sm header-icon-btn" 
             style={{ position: 'relative' }} 
-            onClick={() => setShowNotifications(!showNotifications)}
+            onClick={() => toggleDropdown(setShowNotifications, showNotifications)}
             title="Notifikasi"
           >
             <Bell size={16} />
             <span className="badge badge-danger" style={{ position: 'absolute', top: '-5px', right: '-5px', fontSize: '10px', padding: '2px 5px', minWidth: '18px' }}>3</span>
           </button>
           {showNotifications && (
-            <div style={{
-              position: 'absolute',
-              top: '40px',
-              right: '0',
+            <div className="header-dropdown" style={{
+              position: isMobile ? 'fixed' : 'absolute',
+              top: isMobile ? 'auto' : '40px',
+              bottom: isMobile ? '10px' : 'auto',
+              right: isMobile ? '10px' : '0',
+              left: isMobile ? '10px' : 'auto',
               backgroundColor: 'white',
               border: '1px solid #ddd',
               borderRadius: '8px',
               boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-              width: '320px',
-              zIndex: 1000
+              width: isMobile ? 'auto' : '320px',
+              maxHeight: isMobile ? '70vh' : '350px',
+              overflowY: 'auto',
+              zIndex: 1100
             }}>
               <div style={{ padding: '15px', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <strong>Notifikasi (3)</strong>

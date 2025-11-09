@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard,
@@ -49,11 +49,38 @@ import {
   Bell,
   Calendar,
   Database,
-  FolderOpen
+  FolderOpen,
+  Menu,
+  X as CloseIcon
 } from 'lucide-react';
 
 const Sidebar = () => {
   const location = useLocation();
+  const [isMobileExpanded, setIsMobileExpanded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth > 768) {
+        setIsMobileExpanded(false);
+      }
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const toggleSidebar = () => {
+    setIsMobileExpanded(!isMobileExpanded);
+  };
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setIsMobileExpanded(false);
+    }
+  };
   
   const menuSections = [
     {
@@ -195,41 +222,74 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="sidebar">
-      <div className="sidebar-logo">
-        <div className="logo-container">
-          <Building2 size={40} className="logo-icon" />
-        </div>
-        <h1>RS TRIMATRA</h1>
-        <p>Sistem Informasi Rumah Sakit</p>
-      </div>
-      
-      <div className="sidebar-menu-container">
-        {menuSections.map((section, sectionIndex) => (
-          <div key={sectionIndex} className="sidebar-menu-section">
-            <div className="sidebar-menu-section-title">{section.title}</div>
-            <ul className="sidebar-menu">
-              {section.items.map((item) => {
-                const Icon = item.icon;
-                const isActive = location.pathname === item.path;
-                
-                return (
-                  <li key={item.path} className="sidebar-menu-item">
-                    <Link 
-                      to={item.path} 
-                      className={`sidebar-menu-link ${isActive ? 'active' : ''}`}
-                    >
-                      <Icon className="sidebar-menu-icon" size={20} />
-                      <span>{item.label}</span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+    <>
+      {/* Mobile Overlay */}
+      {isMobile && isMobileExpanded && (
+        <div 
+          className="mobile-overlay active" 
+          onClick={toggleSidebar}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 999,
+            animation: 'fadeIn 0.3s ease'
+          }}
+        />
+      )}
+
+      {/* Sidebar */}
+      <div className={`sidebar ${isMobileExpanded ? 'mobile-expanded' : ''}`}>
+        <div className="sidebar-logo">
+          <div className="logo-container">
+            <Building2 size={40} className="logo-icon" />
           </div>
-        ))}
+          <h1>RS TRIMATRA</h1>
+          <p>Sistem Informasi Rumah Sakit</p>
+        </div>
+        
+        <div className="sidebar-menu-container">
+          {menuSections.map((section, sectionIndex) => (
+            <div key={sectionIndex} className="sidebar-menu-section">
+              <div className="sidebar-menu-section-title">{section.title}</div>
+              <ul className="sidebar-menu">
+                {section.items.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location.pathname === item.path;
+                  
+                  return (
+                    <li key={item.path} className="sidebar-menu-item">
+                      <Link 
+                        to={item.path} 
+                        className={`sidebar-menu-link ${isActive ? 'active' : ''}`}
+                        onClick={handleLinkClick}
+                      >
+                        <Icon className="sidebar-menu-icon" size={20} />
+                        <span>{item.label}</span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+
+      {/* Mobile Menu Toggle Button */}
+      {isMobile && (
+        <button 
+          className="mobile-menu-toggle"
+          onClick={toggleSidebar}
+          aria-label={isMobileExpanded ? 'Tutup Menu' : 'Buka Menu'}
+        >
+          {isMobileExpanded ? <CloseIcon size={24} /> : <Menu size={24} />}
+        </button>
+      )}
+    </>
   );
 };
 
